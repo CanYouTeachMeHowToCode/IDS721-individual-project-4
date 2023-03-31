@@ -1,5 +1,5 @@
-# rust-new-project-template
-A good starting point for a new Rust project
+# Individual Project #4: Serverless Data Engineering Pipeline with Rust
+Build a useful, serverless application in Rust.
 
 ## References
 
