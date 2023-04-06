@@ -6,3 +6,11 @@ fn main() {
     let random_board = &all_boards[board_index];
     println!("{random_board:#?}");
 }
+
+#[cfg(test)]
+mod tests {
+    #[test]
+    fn test_num_boards() {
+        assert_eq!(project4::generate_all_chess960_boards().len(), 960);
+    }
+}
