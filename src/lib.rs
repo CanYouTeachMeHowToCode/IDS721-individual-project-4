@@ -1,5 +1,7 @@
-// library for generate the all possible Chess960 start boards (back rows)
+/* library for Chess960 Board Generator */
 use itertools::Itertools;
+
+// function for generate the back rows (row 8) all possible Chess960 start boards
 pub fn generate_all_chess960_boards() -> Vec<Vec<String>> {
     // Generate all possible starting positions for the back row.
     let mut result = Vec::new();
@@ -14,12 +16,13 @@ pub fn generate_all_chess960_boards() -> Vec<Vec<String>> {
 
         // Check if the position is valid and add it to the result if it is
         if is_valid_chess960_position(&position) {
-            result.push(position.iter().map(|&s| s.to_string()).collect());
+            result.push(generate_chess_board(position));
         }
     }
     result
 }
 
+// function for checking whether the position (back row) is a valid Chess960 position
 fn is_valid_chess960_position(position: &[&str]) -> bool {
     // Check that there is exactly one king
     let mut king_count = 0;
@@ -73,4 +76,38 @@ fn is_valid_chess960_position(position: &[&str]) -> bool {
 
     // All checks passed, the position is valid
     true
+}
+
+// function for generate the board from the back row vector
+fn generate_chess_board(back_row: [&str; 8]) -> Vec<String> {
+    let mut board = Vec::new();
+    let back_row_black = to_black_piece(&back_row.concat());
+    board.push(back_row_black);
+    board.push(String::from("♟♟♟♟♟♟♟♟"));
+
+    let empty_row = ".".repeat(8);
+    board.push(empty_row.clone());
+    board.push(empty_row.clone());
+    board.push(empty_row.clone());
+    board.push(empty_row);
+
+    board.push(String::from("♙♙♙♙♙♙♙♙"));
+    board.push(back_row.concat());
+    board
+}
+
+// function for mapping the back row with white pieces to corrsponding row of black pieces
+fn to_black_piece(back_row: &str) -> String {
+    back_row
+        .chars()
+        .map(|c| match c {
+            '♖' => '♜',
+            '♘' => '♞',
+            '♗' => '♝',
+            '♕' => '♛',
+            '♔' => '♚',
+            '♙' => '♟',
+            _ => c,
+        })
+        .collect()
 }
