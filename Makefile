@@ -15,10 +15,16 @@ lint:
 test:
 	cargo test --quiet
 
-run:
-	cargo run
-
 build-release:
-	cargo build --release
+	cargo lambda build --release --arm64
 
-all: format-check lint test run build-release
+deploy:
+	cargo lambda deploy
+
+invoke:
+	cargo lambda invoke --remote \
+		--data-ascii '' \
+  		--output-format json \
+  		project4
+
+all: format-check lint test build-release deploy invoke
