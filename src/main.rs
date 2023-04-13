@@ -17,7 +17,7 @@ async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error
     // let response = build_success_response(board).await;
     let response = Response {
         req_id: event.context.request_id,
-        msg: board.join(", "),
+        msg: board.join("\n"),
     };
     Result::<Response, Error>::Ok(response)
 }
