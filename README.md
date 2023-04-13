@@ -9,6 +9,7 @@ As its name suggests, Chess960 is a variant of Chess that may have different per
 - White pieces and black pieces are symmetric.
 
 One of the possible board configuration of Chess960 is shown below:
+![Sample Chess960 Board](https://user-images.githubusercontent.com/50161537/231633971-db9f68b0-62d7-4185-ac0e-3538dc51c7f3.png)
 
 Therefore, doing some quick math, we have 4 light squares for one bishop, 4 dark squares for the other bishop, 6 remaining squares for the queen and 5! / (3! × 2!) = 5 × 4 / 2 = 10 ways to place the two (identical) knights on the remaining 5 squares contributes to 4 × 4 × 6 × 10 × 1 = 960 distinct legal permutations of the starting positions of the first-rank pieces. 
 
